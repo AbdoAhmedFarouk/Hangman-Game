@@ -1,0 +1,255 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: sans-serif;
+}
+ul li {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+}
+.container {
+  width: 90%;
+  margin: 20px auto;
+  padding: 10px;
+}
+.game-info {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+}
+.game-info .game-name {
+  flex: 1;
+}
+.game-info .category {
+  flex: 1;
+  text-align: right;
+}
+.game-info .category span {
+  text-transform: capitalize;
+  color: #e91e63;
+  font-weight: bold;
+}
+.content {
+  display: flex;
+  margin-top: 10px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+}
+.shape {
+  flex: 1;
+  background-color: #f8f8f8;
+  padding: 20px;
+  height: 324px;
+}
+.shape.wrong-1 .the-draw {
+  display: block;
+}
+.shape.wrong-2 .the-draw .stand {
+  display: block;
+}
+.shape.wrong-3 .the-draw .hang {
+  display: block;
+}
+.shape.wrong-4 .the-draw .rope {
+  display: block;
+}
+.shape.wrong-5 .the-draw .head {
+  display: block;
+}
+.shape.wrong-6 .the-draw .body {
+  display: block;
+}
+.shape.wrong-7 .the-draw .hands {
+  display: block;
+}
+.shape.wrong-8 .the-draw .legs {
+  display: block;
+}
+.shape .the-draw {
+  position: relative;
+  margin: auto;
+  width: 60px;
+  height: 280px;
+  border-bottom: 4px solid #222;
+  left: -60px;
+  display: none;
+}
+.shape .the-draw .stand {
+  position: absolute;
+  height: 100%;
+  width: 4px;
+  left: 50%;
+  margin-left: -2px;
+  background-color: #222;
+  display: none;
+}
+.shape .the-draw .hang {
+  display: none;
+}
+.shape .the-draw .hang::before {
+  content: '';
+  position: absolute;
+  width: 100px;
+  height: 4px;
+  background-color: #222;
+  top: 15px;
+  left: 50%;
+}
+.shape .the-draw .hang::after {
+  content: '';
+  position: absolute;
+  height: 30px;
+  width: 4px;
+  background-color: #222;
+  top: 15px;
+  left: 130px;
+}
+.shape .the-draw .rope {
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  border: 4px dashed #222;
+  border-radius: 50%;
+  left: 95px;
+  top: 45px;
+  display: none;
+}
+.shape .the-draw .head {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border: 4px solid #222;
+  border-radius: 50%;
+  left: 105px;
+  top: 55px;
+  display: none;
+}
+.shape .the-draw .body {
+  position: absolute;
+  height: 100px;
+  width: 4px;
+  background-color: #222;
+  left: 130px;
+  top: 105px;
+  display: none;
+}
+.shape .the-draw .hands::before,
+.shape .the-draw .hands::after {
+  content: '';
+  position: absolute;
+  height: 4px;
+  width: 50px;
+  background-color: #222;
+}
+.shape .the-draw .hands {
+  display: none;
+}
+.shape .the-draw .hands::before {
+  left: 130px;
+  top: 140px;
+  transform: rotate(-25deg);
+}
+.shape .the-draw .hands::after {
+  left: 85px;
+  top: 140px;
+  transform: rotate(25deg);
+}
+.shape .the-draw .legs {
+  display: none;
+}
+.shape .the-draw .legs::before,
+.shape .the-draw .legs::after {
+  content: '';
+  position: absolute;
+  height: 4px;
+  width: 50px;
+  background-color: #222;
+}
+.shape .the-draw .legs::before {
+  left: 130px;
+  top: 213px;
+  transform: rotate(25deg);
+}
+.shape .the-draw .legs::after {
+  left: 85px;
+  top: 213px;
+  transform: rotate(-25deg);
+}
+.letters {
+  flex: 1;
+  padding: 20px;
+  text-align: center;
+}
+.letters .letter-box {
+  width: 55px;
+  height: 55px;
+  display: inline-block;
+  background-color: #009688;
+  color: white;
+  font-size: 24px;
+  margin-right: 10px;
+  line-height: 55px;
+  text-transform: capitalize;
+  font-weight: bold;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+.letters .letter-box.clicked {
+  background-color: #333;
+  opacity: .2;
+  pointer-events: none;
+}
+.letter-guess {
+  margin: 10px auto;
+  background-color: #f8f8f8;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  min-height: 104px;
+}
+.letter-guess span {
+  width: 60px;
+  height: 60px;
+  font-size: 24px;
+  margin-right: 10px;
+  text-align: center;
+  line-height: 60px;
+  text-transform: uppercase;
+  font-weight: bold;
+  background-color: #fdfdfd;
+  border-bottom: 3px solid #222;
+  transition: .3s;
+}
+.letter-guess span.has-space {
+  position: relative;
+  background: none;
+  border-bottom: none;
+}
+.letter-guess span.has-space::before {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 4px;
+  background-color: #222;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.popup {
+  position: fixed;
+  background-color: #009688;
+  padding: 100px 20px;
+  width: 80%;
+  top: 20%;
+  left: 10%;
+  text-align: center;
+  font-size: 40px;
+  border: 1px solid #ccc;
+  color: white;
+}
